@@ -42,8 +42,8 @@ neoforge-1.21.1:
         }
         
         dependencies {
-          runtimeOnly "curse.maven:curios-continuation-1037991:5888964"
-          compileOnly "curse.maven:curios-continuation-1037991:5888964"
+          runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.4.0+1.21.1"
+          compileOnly "top.theillusivec4.curios:curios-neoforge:9.4.0+1.21.1"
         }
 
     update_files:
