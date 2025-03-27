@@ -17,11 +17,11 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 dependencies {
     implementation project(':MCreator')
-    implementation fileTree(dir: 'C:/MCreatorNew/lib', include: ['*.jar'])
+    implementation fileTree(dir: 'C:/MCreator/lib', include: ['*.jar'])
 }
 
 tasks.jar {
-    archiveFileName.set("AdornedCuriosAPI_Plugin.zip")
+    archiveFileName.set("CuriosAPI_Plugin.zip")
 }
 
 tasks.register('runMCreatorWithPlugin', JavaExec) {

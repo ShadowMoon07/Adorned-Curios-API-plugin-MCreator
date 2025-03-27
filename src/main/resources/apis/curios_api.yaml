@@ -37,16 +37,17 @@ neoforge-1.21.1:
     gradle: |
         repositories {
         maven {
-          url = "https://cursemaven.com"
+        name = "Curios"
+        url = uri("https://maven.theillusivec4.top/")
           }
         }
         
         dependencies {
-          runtimeOnly "curse.maven:adorned-1036809:5740650"
-          compileOnly "curse.maven:adorned-1036809:5740650"
+          runtimeOnly "top.theillusivec4.curios:curios-neoforge:9.2.2+1.21.1"
+          compileOnly "top.theillusivec4.curios:curios-neoforge:9.2.2+1.21.1:api"
         }
 
     update_files:
         - ~
 
-name: "Curios API (Adorned)"
+name: "Curios API"
