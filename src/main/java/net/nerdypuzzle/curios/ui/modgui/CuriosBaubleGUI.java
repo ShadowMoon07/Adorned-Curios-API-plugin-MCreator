@@ -6,8 +6,11 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.*;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import javax.swing.*;
 
 import net.mcreator.blockly.data.Dependency;
@@ -45,7 +48,7 @@ import net.mcreator.ui.validation.Validator;
 import net.mcreator.ui.validation.component.VComboBox;
 import net.mcreator.ui.validation.component.VTextField;
 import net.mcreator.ui.validation.validators.TextFieldValidator;
-import net.mcreator.ui.validation.validators.TileHolderValidator;
+import net.mcreator.ui.validation.validators.TextureSelectionButtonValidator;
 import net.mcreator.ui.workspace.resources.TextureType;
 import net.mcreator.util.ListUtils;
 import net.mcreator.util.StringUtils;
@@ -331,7 +334,7 @@ public class CuriosBaubleGUI extends ModElementGUI<CuriosBauble> {
         inventoryProperties.add(HelpUtils.wrapWithHelpButton(this.withEntry("item/inventory_stack_size"), L10N.label("elementgui.common.max_stack_size", new Object[0])));
         inventoryProperties.add(this.inventoryStackSize);
         advancedProperties.add("Center", PanelUtils.totalCenterInPanel(inventoryProperties));
-        this.texture.setValidator(new TileHolderValidator(this.texture));
+        texture.setValidator(new TextureSelectionButtonValidator(texture));
         this.page1group.addValidationElement(this.texture);
         this.name.setValidator(new TextFieldValidator(this.name, L10N.t("elementgui.item.error_item_needs_name", new Object[0])));
         this.name.enableRealtimeValidation();
@@ -652,5 +655,11 @@ public class CuriosBaubleGUI extends ModElementGUI<CuriosBauble> {
         item.customModelName = ((Model)Objects.requireNonNull((Model)this.renderType.getSelectedItem())).getReadableName();
 
         return item;
+    }
+
+    @Override
+    @Nullable
+    public URI contextURL() throws URISyntaxException {
+        return null;
     }
 }

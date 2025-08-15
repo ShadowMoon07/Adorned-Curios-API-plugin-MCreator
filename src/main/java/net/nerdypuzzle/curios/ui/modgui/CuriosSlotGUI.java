@@ -15,15 +15,18 @@ import net.mcreator.ui.validation.AggregatedValidationResult;
 import net.mcreator.ui.validation.ValidationGroup;
 import net.mcreator.ui.validation.component.VTextField;
 import net.mcreator.ui.validation.validators.TextFieldValidator;
-import net.mcreator.ui.validation.validators.TileHolderValidator;
+import net.mcreator.ui.validation.validators.TextureSelectionButtonValidator;
 import net.mcreator.ui.workspace.resources.TextureType;
 import net.mcreator.workspace.elements.ModElement;
 import net.nerdypuzzle.curios.element.types.CuriosSlot;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.annotation.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class CuriosSlotGUI extends ModElementGUI<CuriosSlot> {
 
@@ -61,7 +64,7 @@ public class CuriosSlotGUI extends ModElementGUI<CuriosSlot> {
         name.setValidator(new TextFieldValidator(this.name, L10N.t("elementgui.curiosslot.needs_name", new Object[0])));
         name.enableRealtimeValidation();
         page1group.addValidationElement(name);
-        texture.setValidator(new TileHolderValidator(texture));
+        texture.setValidator(new TextureSelectionButtonValidator(texture));
         page1group.addValidationElement(texture);
 
         if (!this.isEditingMode()) {
@@ -99,6 +102,12 @@ public class CuriosSlotGUI extends ModElementGUI<CuriosSlot> {
         slot.name = name.getText();
         slot.amount = (int) amount.getValue();
         return slot;
+    }
+
+    @Override
+    @Nullable
+    public URI contextURL() throws URISyntaxException {
+        return null;
     }
 
 }
